@@ -10,13 +10,29 @@ packer.startup({
     use("folke/tokyonight.nvim")
     -------------------------- plugins -------------------------------------------
     -- nvim-tree (新增)
-    use {
+    use ({
      'nvim-tree/nvim-tree.lua',
      requires = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
      },
      tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
+    })
+    
+    -- bufferline
+    use { "akinsho/bufferline.nvim", requires = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" }}
+    
+    -- lualine (新增)
+    use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+    use("arkav/lualine-lsp-progress")
+    use({ 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } })
+    -- telescope extensions
+    use({"LinArcX/telescope-env.nvim"})
+    -- dashboard
+    use("glepnir/dashboard-nvim")
+    use("ahmedkhalf/project.nvim")
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+
+
   end,
   config = {
     -- 并发数限制
