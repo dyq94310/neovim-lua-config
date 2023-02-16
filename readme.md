@@ -1,3 +1,4 @@
-my neovim config
+## my neovim config
 
-put this project in ``~/.config/nvim``
+how ues?
+- put this project in ``~/.config/nvim``.
