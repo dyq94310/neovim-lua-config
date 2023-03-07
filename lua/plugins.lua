@@ -59,7 +59,6 @@ packer.startup({
     -- 代码格式化 (新增)
     -- use("mhartington/formatter.nvim")
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
-    use("simrat39/rust-tools.nvim")
   end,
   config = {
     -- 并发数限制
