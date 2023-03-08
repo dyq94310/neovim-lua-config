@@ -15,7 +15,8 @@ null_ls.setup({
     -- StyLua
     formatting.stylua,
     -- frontend
-    formatting.prettier.with({ -- 只比默认配置少了 markdown
+    formatting.prettier.with({
+      -- 只比默认配置少了 markdown
       filetypes = {
         "javascript",
         "javascriptreact",
@@ -32,7 +33,5 @@ null_ls.setup({
       },
       prefer_local = "node_modules/.bin",
     }),
-    -- formatting.fixjson,
-    -- formatting.black.with({ extra_args = { "--fast" } }),
   },
 })

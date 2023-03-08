@@ -125,7 +125,7 @@ pluginKeys.nvimTreeList = {
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
-  mapbuf("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  mapbuf("n", "<leader>nn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
   -- code action
   mapbuf("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   -- go xx
