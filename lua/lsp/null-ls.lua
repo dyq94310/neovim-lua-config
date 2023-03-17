@@ -7,31 +7,9 @@ end
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
-  debug = false,
   sources = {
-    -- Formatting ---------------------
-    --  brew install shfmt
-    formatting.shfmt,
-    -- StyLua
-    formatting.stylua,
-    -- frontend
-    formatting.prettier.with({
-      -- 只比默认配置少了 markdown
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-        "css",
-        "scss",
-        "less",
-        "html",
-        "json",
-        "yaml",
-        "graphql",
-      },
-      prefer_local = "node_modules/.bin",
-    }),
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.completion.spell,
   },
 })
