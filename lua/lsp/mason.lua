@@ -15,39 +15,9 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set("n", "<space>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
-	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", function()
 		vim.lsp.buf.format({ async = true })
 	end, bufopts)
-
-	-- nvim-dap
-	vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>", opt)
-	vim.keymap.set("n", "<F6>", ":lua require'dap'.step_over()<CR>", opt)
-	vim.keymap.set("n", "<F7>", ":lua require'dap'.step_into()<CR>", opt)
-	vim.keymap.set("n", "<F8>", ":lua require'dap'.step_out()<CR>", opt)
-	vim.keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", opt)
-	vim.keymap.set("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opt)
-	vim.keymap.set(
-		"n",
-		"<leader>dp",
-		":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-		opt
-	)
-	vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", opt)
-	vim.keymap.set("n", "<leader>dl", ":lua require'dap'.run_last()<CR>", opt)
 end
 
 local mason = require("mason")

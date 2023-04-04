@@ -89,7 +89,15 @@ map("n", "<leader>dn", "<cmd>lua require'dap'.run_to_cursor()<CR>", { desc = "Ru
 map("n", "<leader>dq", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Terminate" })
 --map("n", "<space>f", function()
 --	vim.lsp.buf.format({ async = true })
---end, bufopts)
+--end, opt)
+	-- nvim-dap
+map("n", "<F5>", ":lua require'dap'.continue()<CR>", opt)
+map("n", "<F6>", ":lua require'dap'.step_over()<CR>", opt)
+map("n", "<F7>", ":lua require'dap'.step_into()<CR>", opt)
+map("n", "<F8>", ":lua require'dap'.step_out()<CR>", opt)
+map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", opt)
+map("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opt)
+	
 
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
