@@ -38,6 +38,16 @@ packer.startup({
 
     use({ "williamboman/mason.nvim" })
     use({ "williamboman/mason-lspconfig.nvim" })
+   
+    --------------------- DAP--------------------
+    use ('mfussenegger/nvim-dap')
+    use ('theHamsta/nvim-dap-virtual-text')
+    use ('rcarriga/nvim-dap-ui')
+    use ('mfussenegger/nvim-dap-python')
+    use ('nvim-telescope/telescope-dap.nvim')
+
+
+    --------------------------------------------
     -- 补全引擎
     use("hrsh7th/nvim-cmp")
     -- snippet 引擎

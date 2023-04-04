@@ -16,7 +16,13 @@ require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.indent-blankline")
+
+---lsp
 require("lsp.mason")
 require("lsp.cmp")
 require("lsp.ui")
 require("lsp.null-ls")
+
+
+---DAP
+require("dap.python")

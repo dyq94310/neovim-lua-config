@@ -32,25 +32,52 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>f", function()
 		vim.lsp.buf.format({ async = true })
 	end, bufopts)
+
+	-- nvim-dap
+	vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>", opt)
+	vim.keymap.set("n", "<F6>", ":lua require'dap'.step_over()<CR>", opt)
+	vim.keymap.set("n", "<F7>", ":lua require'dap'.step_into()<CR>", opt)
+	vim.keymap.set("n", "<F8>", ":lua require'dap'.step_out()<CR>", opt)
+	vim.keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", opt)
+	vim.keymap.set("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opt)
+	vim.keymap.set(
+		"n",
+		"<leader>dp",
+		":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+		opt
+	)
+	vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", opt)
+	vim.keymap.set("n", "<leader>dl", ":lua require'dap'.run_last()<CR>", opt)
 end
 
 local mason = require("mason")
 
 local mason_lspconfig = require("mason-lspconfig")
---mason_lspconfig.setup({
---  --ensure_installed = { "jdtls", "lua_ls" ,"bashls" },
---  ensure_installed = { "jdtls", "lua_ls" },
---
---  automatic_installation = true,
---})
-
 require("lspconfig").jdtls.setup({
-	on_attach = on_attach,
+	init_options = {
+		bundles = {
+			vim.fn.glob(
+				"~/.local/share/nvim/mason/packages/java-test/extension/server/com.microsoft.java.debug.plugin-*.jar",
+				1
+			),
+			vim.fn.glob("~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/*.jar", 1),
+		},
+	},
+	on_attach = function(client, buffer)
+		on_attach(client, buffer)
+		--		require("jdtls").setup_dap({ hotcodereplace = "auto" })
+--	 require("jdtls.setup").add_commands()
+	end,
 })
+
+
 require("lspconfig").lua_ls.setup({
 	on_attach = on_attach,
 })
 require("lspconfig").bashls.setup({})
+
+require'lspconfig'.pylsp.setup{}
+
 
 mason.setup({
 	ui = {
@@ -62,6 +89,6 @@ mason.setup({
 	},
 })
 mason_lspconfig.setup({
-	ensure_installed = { "bashls", "jdtls", "json-lsp", "luals" },
+	ensure_installed = { "bashls", "jdtls", "jsonls", "lua_ls" },
 	automatic_installation = true,
 })
